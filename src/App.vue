@@ -8,7 +8,9 @@ const on = false;
 <template>
   <HeaderSection />
   <HelloWorld />
-  {{ on ? "dark mode" : "light mode" }}
+
+  <!-- global component example -->
+  <!-- {{ on ? "dark mode" : "light mode" }} -->
 </template>
 
 <style scoped>

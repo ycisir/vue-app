@@ -1,5 +1,5 @@
 <script setup>
-  import { reactive, ref, isRef, isReactive, isProxy, unref, toRef, toRefs, computed } from 'vue';
+  import { reactive, ref, isRef, isReactive, isProxy, unref, toRef, toRefs, computed, useCssModule } from 'vue';
 
   // const msg = "Hello, World!";
 
@@ -234,7 +234,7 @@
   // });
 
 
-  const isActive = ref(true);
+  // const isActive = ref(true);
   // const isImportant = ref(true);
 
   // const classObj = reactive({
@@ -270,7 +270,11 @@
   // });
 
 
+  // console.log(useCssModule("classes"))
+  // console.log(useCssModule()) //without name if use $style
 
+
+  const theme = { textColor: "red"};
 
 </script>
 
@@ -341,15 +345,33 @@
     <!-- <p>text</p> -->
   <!-- </div> -->
 
+
+
+  <!-- css in vuejs -->
+  <!-- in scoped parent component class applied to their child component root element but not vice versa -->
+  <!-- <div> -->
+    <!-- css module -->
+    <!-- <h3 :class="$style.active">HelloWorld component</h3> -->
+    
+    <!-- custom inject css module -->
+    <!-- <h3 :class="classes.active">HelloWorld 2</h3>   -->
+
+  <!-- </div> -->
+
+  <h3 class="textRed">Hello world component</h3>
 </template>
 
-<style scoped>
+<style module="classes">
   .active {
     background-color: green;
   }
 
   .textWhite {
     color: white;
+  }
+
+  .textRed {
+    color:v-bind(theme.textColor)
   }
 
   .fBold {

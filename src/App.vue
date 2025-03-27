@@ -10,7 +10,7 @@ const on = false;
   <HeaderSection />
   <HelloWorld class="parentClass"/>
   <Hello />
-  <h3 class="text-red bg-black">app component</h3>
+  <!-- <h3 class="text-red bg-black">app component</h3> -->
 
   <!-- global component example -->
   <!-- {{ on ? "dark mode" : "light mode" }} -->

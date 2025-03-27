@@ -358,11 +358,11 @@
 
   <!-- </div> -->
 
-  <h3 class="textRed">Hello world component</h3>
+  <!-- <h3 class="textRed">Hello world component</h3> -->
 </template>
 
 <style module="classes">
-  .active {
+/*  .active {
     background-color: green;
   }
 
@@ -381,5 +381,5 @@
   .iText {
     font-style: italic;
   }
-
+*/
 </style>

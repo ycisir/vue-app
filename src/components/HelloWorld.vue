@@ -1,24 +1,23 @@
 <script setup>
-  import { reactive } from 'vue';
-  import { ref } from 'vue';
+  import { reactive, ref, isRef, isReactive, isProxy, unref, toRef, toRefs, computed } from 'vue';
 
-  const msg = "Hello, World!";
+  // const msg = "Hello, World!";
 
   // attribute binding
-  const empId = 1;
-  const url = "#";
+  // const empId = 1;
+  // const url = "#";
 
   // dynamic attribute binding 
-  const objOfAttrs = {
-    id: 99,
-    href: "#"
-  }
+  // const objOfAttrs = {
+  //   id: 99,
+  //   href: "#"
+  // }
 
   // dynamic arguments
-  const link = "href";
+  // const link = "href";
 
   // boolean attributes
-  const isDisabled = false;
+  // const isDisabled = false;
 
   
   //reactivity
@@ -110,20 +109,107 @@
   // let { count } = obj2;
 
 
-  const obj3 = ref({count: ref(0)});
+  // const obj3 = ref({count: ref(0)});
   
-  setTimeout(()=>{
-    console.log("obj3 ",obj3);
-    console.log("obj3.value ",obj3.value);
-    console.log("obj3.value.count ",obj3.value.count);
-    obj3.value.count++;
-  },3000);
+  // setTimeout(()=>{
+  //   console.log("obj3 ",obj3);
+  //   console.log("obj3.value ",obj3.value);
+  //   console.log("obj3.value.count ",obj3.value.count);
+  //   obj3.value.count++;
+  // },3000);
 
+
+
+
+
+
+  // let a=10;
+  // let b=ref(20); //most used
+  // let c=reactive({count:1}); //most used
+  // console.log(a);
+  // console.log(isRef(a)); //most used
+  // console.log(b);
+  // console.log(isRef(b));
+  // console.log(c);
+  // console.log(isReactive(c)); //most used
+  // console.log(isReactive(b));
+  // console.log(isProxy(b));
+  // console.log(isProxy(c));
+  // console.log("b: ",b);
+  // console.log("b: ",unref(b)); //sometime used
+
+  // let student = reactive({
+  //   name: "harry",
+  //   roll: 7
+  // });
+
+  // console.log(student);
+  // console.log(isReactive(student));
+  // console.log(student.name);
+  // console.log(isReactive(student.name));
+  // console.log(isRef(student.name));
+  // let nameRef = toRef(student, "name");
+  // console.log(nameRef);
+  // console.log(isRef(nameRef));
+  // console.log(student);
+  // let studentAsRef = toRefs(student);
+  // console.log(studentAsRef);
+  // console.log(isRef(studentAsRef.name));
+  // console.log(studentAsRef.name.value);
+  // console.log(isRef(studentAsRef.roll));
+  // console.log(studentAsRef.roll.value);
+
+
+
+
+  // method and computed property
+  // let firstName = ref("Ron");
+  // let lastName = ref("Weasely");
+
+  // const fullName = ()=> {
+  //   return firstName.value +' '+ lastName.value;
+  // }
+
+  // setTimeout(()=> {
+  //   console.log("setTimeout called");
+  //   firstName.value="Ginny";
+  // },3000);
+
+
+  // computed property (faster as compared to method bcz it will cache the data if same)
+  // only readable (getter -only)
+  let firstName = ref("Ron");
+  let lastName = ref("Weasely");
+  // const fullName = computed(() => {
+  //   console.log("getter called")
+  //   return firstName.value +" "+ lastName.value;
+  // });
+
+  // for setter
+  const fullName = computed({
+    get() {
+      console.log("getter called");
+      return firstName.value +" "+ lastName.value;
+    },
+
+    set(newValue) {
+      console.log("setter called");
+      [firstName.value, lastName.value] = newValue.split(" ");
+    },
+  });
+
+  console.log(isRef(fullName));
+
+  setTimeout(()=> {
+    console.log("setTimeout called");
+    // firstName.value="Ginny";
+    fullName.value = "Harry Potter";
+  },3000);
 
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <!-- <h1>{{ msg }}</h1> -->
 
   <!-- attribute binding -->
   <!-- <p v-bind:id="empId">to see id please do inspect</p> same as below--> 
@@ -154,17 +240,19 @@
 
 
   <!-- ref() example -->
-  <p>ref example</p>
+  <!-- <p>ref example</p> -->
   <!-- <p>sum {{ a + b }}</p> -->
 
   <!-- <p>count: {{ obj1.count }}</p> -->
   <!-- <p>count: {{ obj2.count }}</p> -->
   <!-- <p>count: {{ obj2.count.value + 19 }}</p> -->
   <!-- <p>count: {{ count + 19 }}</p> -->
-  <p>count: {{ obj3.count }}</p>
+  <!-- <p>count: {{ obj3.count }}</p> -->
 
 
-
+  <!-- method and computed property -->
+  <!-- <h3>{{ fullName() }}</h3> -->
+  <h3>{{ fullName }}</h3>
 </template>
 
 <style scoped></style>

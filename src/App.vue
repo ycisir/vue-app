@@ -7,7 +7,7 @@ const on = false;
 
 <template>
   <HeaderSection />
-  <HelloWorld />
+  <HelloWorld class="parentClass"/>
 
   <!-- global component example -->
   <!-- {{ on ? "dark mode" : "light mode" }} -->

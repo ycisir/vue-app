@@ -178,33 +178,99 @@
 
   // computed property (faster as compared to method bcz it will cache the data if same)
   // only readable (getter -only)
-  let firstName = ref("Ron");
-  let lastName = ref("Weasely");
+  // let firstName = ref("Ron");
+  // let lastName = ref("Weasely");
   // const fullName = computed(() => {
   //   console.log("getter called")
   //   return firstName.value +" "+ lastName.value;
   // });
 
   // for setter
-  const fullName = computed({
-    get() {
-      console.log("getter called");
-      return firstName.value +" "+ lastName.value;
-    },
+  // const fullName = computed({
+  //   get() {
+  //     console.log("getter called");
+  //     return firstName.value +" "+ lastName.value;
+  //   },
 
-    set(newValue) {
-      console.log("setter called");
-      [firstName.value, lastName.value] = newValue.split(" ");
-    },
-  });
+  //   set(newValue) {
+  //     console.log("setter called");
+  //     [firstName.value, lastName.value] = newValue.split(" ");
+  //   },
+  // });
 
-  console.log(isRef(fullName));
+  // console.log(isRef(fullName));
 
-  setTimeout(()=> {
-    console.log("setTimeout called");
-    // firstName.value="Ginny";
-    fullName.value = "Harry Potter";
-  },3000);
+  // setTimeout(()=> {
+  //   console.log("setTimeout called");
+  //   // firstName.value="Ginny";
+  //   fullName.value = "Harry Potter";
+  // },3000);
+
+
+
+
+
+
+  // class and style binding for css
+  // const fg = ref("white");
+  // const bg = ref("black")
+
+  // setTimeout(()=>{
+  //   console.log(fg);
+  //   fg.value = "black";
+  //   bg.value = "red";
+  // },3000)
+
+
+  // const styleObj = reactive({
+  //   color: "red",
+  //   backgroundColor: "yellow"
+  // });
+
+  // const fontObj = reactive({
+  //   fontSize: "23px",
+  //   margin: "30px",
+  //   textAlign: "center"
+  // });
+
+
+  const isActive = ref(true);
+  // const isImportant = ref(true);
+
+  // const classObj = reactive({
+  //   active:false,
+  //   textWhite: false,
+  //   fBold: false,
+  //   iText: false
+  // })
+
+  // setTimeout(()=>{
+  //   console.log("called............")
+  //   // isActive.value = true;
+  //   // isImportant.value = true;
+
+
+  //   // classObj.active= true;
+  //   // classObj.textWhite=  true;
+  //   // classObj.fBold=  true;
+  //   // classObj.iText=  true;
+
+
+  //   isActive.value = true;
+  //   isImportant.value = true;
+  //   console.log(isActive.value);
+  //   console.log(isImportant.value);
+  //   // iText = true
+
+  // },3000);
+
+  // const myClass = computed(()=> {
+  //     active: isActive.value;
+  //     fBold: isImportant.value;
+  // });
+
+
+
 
 </script>
 
@@ -252,7 +318,46 @@
 
   <!-- method and computed property -->
   <!-- <h3>{{ fullName() }}</h3> -->
-  <h3>{{ fullName }}</h3>
+  <!-- <h3>{{ fullName }}</h3> -->
+
+
+  <!-- class and style binding for css -->
+  <!-- style binding -->
+  <!-- <h3 :style="{color:fg, backgroundColor:bg}">Hello world!</h3> -->
+  <!-- <h3 :style="[styleObj, fontObj]">Another Hello world!</h3> -->
+
+
+  <!-- class binding -->
+  <!-- <p class="textWhite" :class="{active: isActive, fBold: isImportant}">Authorized</p> -->
+  <!-- in this parent component class will apply to root attr in child component if you want to use child attr also  -->
+  <!-- then we use $attrs -->
+
+
+  <!-- <p class="innerClass1" :class="$attrs.class">Hello vuejs</p>root -->
+  <!-- <p class="innerClass2">No love for reactjs</p> -->
+
+  <!-- <div>root -->
+    <!-- <h1>abc</h1> -->
+    <!-- <p>text</p> -->
+  <!-- </div> -->
+
 </template>
 
-<style scoped></style>
+<style scoped>
+  .active {
+    background-color: green;
+  }
+
+  .textWhite {
+    color: white;
+  }
+
+  .fBold {
+    font-weight: bold;
+  }
+
+  .iText {
+    font-style: italic;
+  }
+
+</style>

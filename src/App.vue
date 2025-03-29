@@ -2,6 +2,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Hello from './components/Hello.vue'
 import { ref } from 'vue'
+import FormComponent from './components/FormComponent.vue';
 
 //text interpolation
 const on = false;
@@ -24,6 +25,9 @@ const students = ref(['harry', 'hermoine', 'ron'])
 
   <!-- global component example -->
   <!-- {{ on ? "dark mode" : "light mode" }} -->
+
+  <FormComponent />
+    
 </template>
 
 <style scoped>

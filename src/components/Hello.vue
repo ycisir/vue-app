@@ -24,28 +24,28 @@ defineProps({
 
 
 // v-for with v-if
-const employees = ref([
-	{
-	id: "7",
-	name: "harry",
-	salary: 19000
-	},
-	{
-	id: "22",
-	name: "ron",
-	salary: 17000
-	},
-	{
-	id: "18",
-	name: "hermoine",
-	salary: 19000
-	},
-	{
-	id: "6",
-	name: "ginny",
-	salary: 15000
-	},
-])
+// const employees = ref([
+// 	{
+// 	id: "7",
+// 	name: "harry",
+// 	salary: 19000
+// 	},
+// 	{
+// 	id: "22",
+// 	name: "ron",
+// 	salary: 17000
+// 	},
+// 	{
+// 	id: "18",
+// 	name: "hermoine",
+// 	salary: 19000
+// 	},
+// 	{
+// 	id: "6",
+// 	name: "ginny",
+// 	salary: 15000
+// 	},
+// ])
 
 
 
@@ -112,6 +112,89 @@ const employees = ref([
 
 
 
+
+
+// event handling
+// 1.inline handling
+// 2.method handling
+
+// 1
+// const count = ref(0);
+
+// function say(e) {
+// 	console.log("event:", e);
+// }
+
+// accessing event argument using event variable
+// function say(str, e) {
+// 	console.log("Hello,",str);
+// 	console.log("event: ",e);
+// }
+
+
+
+
+// 2
+// function say(e) {
+// 	console.log("event:", e);
+// }
+
+
+
+
+
+// event modifiers
+// function checkData(e) {
+// 	// e.preventDefault()
+// 	console.log('check data')
+// }
+
+
+// function onSubmit() {
+// 	console.log('form submited...')
+// }
+
+
+
+// key modifier
+// function onPressEnter() {
+// 	console.log('you press enter')
+// }
+
+
+
+// system modifier
+// function onPressAltEnter() {
+// 	console.log('key pressed')
+// }
+
+
+// function onCtrlClick() {
+// 	console.log('key pressed')
+// }
+
+
+
+
+
+// exact modifier
+// function onCtrlClick() {
+// 	console.log('key pressed')
+// }
+
+
+// function onNoSys() {
+// 	console.log('key pressed')
+// }
+
+
+function onLeftClick() {
+	console.log('left click event')
+}
+
+function onRighttClick() {
+	console.log('right click event')
+}
 
 </script>
 
@@ -237,7 +320,74 @@ const employees = ref([
 
 
 	<!-- getting data from app component through prop -->
-	<h3>data of student {{ item }}</h3>
+	<!--<h3>data of student {{ item }}</h3>-->
+
+
+
+
+
+	<!-- event handling -->
+	 <br>
+	<!-- <button @click="count++">Increase</button>
+	count: {{ count }}
+	<button @click="count--">Decrease</button> -->
+
+
+	<!-- count: {{ count }} -->
+	<!-- <input type="text" v-on:focusin="count++" v-on:focusout="count--"> -->
+
+	<!-- <button @click="say()">click</button> -->
+	<!-- <button @click="say('bye...')">click</button> -->
+	<!-- <button @click="say('harry',$event)">click</button> -->
+
+
+	<!-- arraow function -->
+	<!-- <button @click="(event)=> say('jack',event)">click</button> -->
+
+
+	<!-- method handling -->
+	<!-- <button @click="say">click</button> -->
+
+
+
+
+	<!-- event modifiers -->
+	 <!-- <a @click.prevent="checkData" href="https://www.google.com/">go to google</a> -->
+
+	<!-- <form @submit.prevent="onSubmit">
+		<button type="submit">submit</button>
+	</form> -->
+
+
+
+
+	<!-- key modifier -->
+	 <!-- <input @keyup.enter="onPressEnter" type="text"> -->
+
+
+
+	 <!-- system modifier -->
+	 <!-- <input @keyup.alt.enter="onPressAltEnter" type="text"> -->
+	 <!-- <input @keyup.ctrl="onCtrlClick" type="text"> -->
+
+
+
+	 <!-- exact modifier -->
+	  <!-- <button @click.ctrl.exact="onCtrlClick">click</button> -->
+
+
+	  <!-- <button @click.exact="onNoSys">click</button> -->
+
+
+	  <!-- <input @click.left="onLeftClick" type="text"> -->
+
+	<!-- multiple event -->
+	  <!-- <button v-on="{ right: onRighttClick, left: onLeftClick }">click</button> -->
+	  
+	 <!-- multiple handling -->
+	  <!-- <button @click="{ firstEvent(), secondEvent() }">click</button> -->
+
+
 </template>
 
 <style>

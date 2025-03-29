@@ -12,12 +12,15 @@ const students = ref(['harry', 'hermoine', 'ron'])
 
 <template>
   <HeaderSection />
-  <HelloWorld class="parentClass"/>
+  <!-- <HelloWorld class="parentClass"/> -->
   <!-- <Hello v-for="n in 5" :key="n"/> -->
   <!-- <h3 class="text-red bg-black">app component</h3> -->
 
   <!-- passing data through props -->
-  <Hello v-for="(student, i) in students" :key="i" :item="student" />
+  <!-- <Hello v-for="(student, i) in students" :key="i" :item="student" /> -->
+  
+  
+  <Hello />
 
   <!-- global component example -->
   <!-- {{ on ? "dark mode" : "light mode" }} -->
